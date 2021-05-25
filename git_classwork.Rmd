@@ -1,0 +1,13 @@
+---
+title: "git_classwork"
+author: "Indali Bora"
+date: "5/24/2021"
+output: word_document
+---
+
+```{r}
+library(tidyverse)
+diamonds
+ggplot(data=diamonds) +
+  geom_point(mapping = aes(x = carat, y= price))
+```
