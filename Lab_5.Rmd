@@ -1,0 +1,12 @@
+---
+title: "Lab_5"
+author: "Indali Bora"
+date: "5/26/2021"
+output: word_document
+---
+
+```{r}
+library(tidyverse)
+ggplot(data = mpg) +
+  geom_boxplot(mapping = aes(x=trans, y=cty), fill = "red") 
+```
