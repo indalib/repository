@@ -1,0 +1,106 @@
+---
+title: "HW_1"
+author: "Katherine Westcott & Indali Bora"
+date: "5/28/2021"
+output: word_document
+---
+
+```{r}
+library(tidyverse)
+library(dplyr)
+#1
+function1 <- function(a) {
+  log(a) + log10(a) + log2(a)
+}
+for ( i in c(2,4,6,8,10)) {
+  print(function1(i))
+}
+#2
+function2 <- function(b)
+if (b^2 >= 100) {
+  print('This is a big number')
+} else {
+  print('This is not a big number')  
+}
+function2(5)
+function2(50)
+#3 (2 interpretations of the problem)
+#If making changes to the coding structure itself:
+team_A <- 2 # Number of goals scored by Team A
+team_B <- 2# Number of goals scored by Team B
+
+if (team_A >= team_B){
+  print ("Team A won")
+} else if (team_A < team_B){
+  print ("Team B won")
+} else {
+  "Team A & B tied"
+}
+#If making changes to the goal values to match coding structure:
+function3 <- function(team_A, team_B) {
+  if (team_A > team_B){
+  print ("Team A won")
+} else if (team_A < team_B){
+  print ("Team B won")
+} else {
+  "Team A & B tied"
+}
+}
+function3(3,2)
+#4
+new_function <- function(x) {
+  if (x %% 3 == 0 & x %% 5 == 0) {
+    result <- "divisible by Three and Five"
+  }
+  else if (x %% 3 == 0 & x %% 4 == 0) {
+    result <- "divisible by Three and Four"
+  }
+  else {
+    result <- "neither"
+  }
+  return(result)
+}
+
+new_function(16)
+new_function(45)
+new_function(24)
+#5
+mpg %>%
+  select(displ, cyl, cty, hwy) -> mpg1
+
+output <- vector("double", ncol(mpg1))  
+for (i in seq_along(mpg1)) {          
+  output[[i]] <- var(mpg1[[i]])    
+}
+output
+#6
+primes <- list(11,13,17,19,23,29)
+for (i in primes) {
+  print ((i^3)-(i^2))
+}
+#7: This data table lists the arrests (for columns "Murder", "Assault", and "Rape" by state per 100,000 residents of the 50 US States in 1973, as well as the percent of state population residing in urban areas (in column "UrbanPop"). 
+USArrests
+?USArrests
+#8: According to the data frame, North Carolina has the largest number of assaults.
+map_dbl(USArrests, max)
+
+USArrests %>%
+  filter(Assault == 337.0)
+#9
+library(nycflights13)
+flights
+#10: A tibble prints only the first 10 rows of a data set. Unlike a data frame, it prints only part of the data.
+nrow(flights)
+ncol(flights)
+is_tibble(flights)
+#11: Used textbook to learn more about map_chr (https://r4ds.had.co.nz/iteration.html?q=map#the-map-functions)
+map_chr(flights, typeof)
+#12
+new <- iris %>%
+  split(.$Species) %>%
+  map(~lm(Sepal.Width ~ Sepal.Length, data = .))
+new
+
+new %>%
+  map(summary)
+```
